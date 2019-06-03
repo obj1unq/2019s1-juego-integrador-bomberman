@@ -1,0 +1,30 @@
+import wollok.game.*
+import elementos.*
+import personajes.*
+
+program BomberMan {
+
+//	CONFIG	
+	game.title("Bomber Man")
+	game.height(15)
+	game.width(15)
+	game.ground("suelo.png") //Conseguir un fondo
+
+
+//	VISUALES
+	game.addVisual(muro)
+	game.addVisual(bomberman)
+	
+	
+//	TECLADO
+	keyboard.up().onPressDo { bomberman.move(bomberman.position().up(1)) }
+	keyboard.down().onPressDo { bomberman.move(bomberman.position().down(1)) }
+	keyboard.right().onPressDo { bomberman.move(bomberman.position().right(1)) }
+	keyboard.left().onPressDo { bomberman.move(bomberman.position().left(1)) }
+
+	keyboard.a().onPressDo { bomberman.dejarBomba() }
+	
+
+	game.start()
+}
+
