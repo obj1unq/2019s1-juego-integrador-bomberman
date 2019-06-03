@@ -4,8 +4,8 @@ object bomba {
 	method image() = "manzana.png"
 }
 
-object muro {
-	var property position = game.at(5,5)
+class Muro {
+	var property position
 	
 	method image() = "muro.png"
 }
