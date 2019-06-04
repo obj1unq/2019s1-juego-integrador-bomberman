@@ -26,7 +26,7 @@ program BomberMan {
 	keyboard.right().onPressDo { bomberman.move(bomberman.position().right(1)) }
 	keyboard.left().onPressDo { bomberman.move(bomberman.position().left(1)) }
 
-	keyboard.a().onPressDo { bomberman.dejarBomba() }
+	keyboard.a().onPressDo { bomberman.dejarBomba(new Bomba()) }
 	
 
 	game.start()

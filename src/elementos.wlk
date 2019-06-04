@@ -1,7 +1,7 @@
 import wollok.game.*
 
-object bomba {
-	method image() = "manzana.png"
+class Bomba {
+	method image() = "Bomb.png"
 }
 
 class Muro {
