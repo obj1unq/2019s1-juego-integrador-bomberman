@@ -2,7 +2,7 @@ import wollok.game.*
 import elementos.*
 
 object bomberman {
-	var property position = game.at(0,0)
+	var property position = game.at(7,7)
 	
 	method image() = "Bomberman.png"
 	
@@ -11,11 +11,12 @@ object bomberman {
 	}
 	
 	method dejarBomba(bomb){
-       game.addVisualIn(bomb, position)
-       game.onTick(2000,"SacarBomba",{ game.removeVisual(bomb) }) /* Es repetitivo, saca la bomba, pero
-       															     despues sigue buscando sacar mas bombas */
-       /* game.removeTickEvent("SacarBomba")  Esta linea elimina el onTick,
-       										  pero me anula la accion anterior*/
+        game.addVisualIn(bomb, position)
+        game.onTick(2000, "explotarBomba", { 
+        bomb.explotar() //Con este agregamos la explosión.
+        game.removeTickEvent("explotarBomba")
+        })
     }
 }
 
+ 

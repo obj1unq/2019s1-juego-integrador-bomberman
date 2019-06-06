@@ -19,6 +19,17 @@ program BomberMan {
 	
 	game.addVisual(bomberman)
 	
+	//Temporal de meustra.
+	game.addVisualIn(new Explosion(), game.at(3,11))
+	game.addVisualIn(explosionNorte, game.at(3,13))
+	game.addVisualIn(cuerpoNS, game.at(3,12))
+	game.addVisualIn(cuerpoNS, game.at(3,10))
+	game.addVisualIn(explosionSur, game.at(3,9))
+	game.addVisualIn(cuerpoOE, game.at(2,11))
+	game.addVisualIn(cuerpoOE, game.at(4,11))
+	game.addVisualIn(explosionEste, game.at(5,11))
+	game.addVisualIn(explosionOeste, game.at(1,11))
+	
 	
 //	TECLADO
 	keyboard.up().onPressDo { bomberman.move(bomberman.position().up(1)) }
