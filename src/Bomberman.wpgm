@@ -1,41 +1,45 @@
 import wollok.game.*
 import elementos.*
 import personajes.*
+import pared.*
+import muro.*
+import direcciones.*
 
 program BomberMan {
 
 //	CONFIG	
 	game.title("Bomber Man")
-	game.height(15)
-	game.width(15)
+	game.height(13)
+	game.width(18)
 	game.ground("suelo.png") //Conseguir un fondo
 
-
-//	VISUALES
-	game.addVisual(new Muro(position = game.at(5,5)))
-	game.addVisual(new Muro(position = game.at(3,5)))
-	game.addVisual(new Muro(position = game.at(1,5)))
-	game.addVisual(new Muro(position = game.at(7,5)))
+//	PAREDES
+	const ancho = game.width() - 1
+	const largo = game.height() - 1
 	
+	var posMuros = []
+	(0 .. ancho).forEach{ n => posMuros.add(new Position(n, 0)) } // bordeAbajo
+	(0 .. ancho).forEach{ n => posMuros.add(new Position(n, largo)) } // bordeArriba 
+	(0 .. largo).forEach{ n => posMuros.add(new Position(0, n)) } // bordeIzq 
+	(0 .. largo).forEach{ n => posMuros.add(new Position(ancho, n)) } // bordeDer
+		
+	posMuros.forEach { unMuro => game.addVisual(new Muro(unMuro)) }
+		
 	game.addVisual(bomberman)
 	
-	//Temporal de meustra.
+	/*Temporal de meustra.
 	game.addVisualIn(new Explosion(), game.at(3,11))
-	game.addVisualIn(explosionNorte, game.at(3,13))
-	game.addVisualIn(cuerpoNS, game.at(3,12))
-	game.addVisualIn(cuerpoNS, game.at(3,10))
-	game.addVisualIn(explosionSur, game.at(3,9))
-	game.addVisualIn(cuerpoOE, game.at(2,11))
-	game.addVisualIn(cuerpoOE, game.at(4,11))
-	game.addVisualIn(explosionEste, game.at(5,11))
-	game.addVisualIn(explosionOeste, game.at(1,11))
+	game.addVisualIn(explosionNorte, game.at(3,12))
+	game.addVisualIn(explosionSur, game.at(3,10))
+	game.addVisualIn(explosionEste, game.at(4,11))
+	game.addVisualIn(explosionOeste, game.at(2,11))*/
 	
 	
 //	TECLADO
-	keyboard.up().onPressDo { bomberman.move(bomberman.position().up(1)) }
-	keyboard.down().onPressDo { bomberman.move(bomberman.position().down(1)) }
-	keyboard.right().onPressDo { bomberman.move(bomberman.position().right(1)) }
-	keyboard.left().onPressDo { bomberman.move(bomberman.position().left(1)) }
+	keyboard.up().onPressDo { bomberman.mover(arriba) }
+	keyboard.down().onPressDo { bomberman.mover(abajo) }
+	keyboard.right().onPressDo { bomberman.mover(derecha) }
+	keyboard.left().onPressDo { bomberman.mover(izquierda) }
 
 	keyboard.a().onPressDo { bomberman.dejarBomba(new Bomba()) }
 	
