@@ -11,14 +11,24 @@ class Bomba {
 	}
 
 	method detonar(position){
-		game.addVisualIn(new Explosion(), position)
+		const explo = new Explosion()
+		game.addVisualIn(explo, position)
 		game.addVisualIn(explosionNorte, position.up(1))
 		game.addVisualIn(explosionSur, position.down(1))
 		game.addVisualIn(explosionEste, position.right(1))
 		game.addVisualIn(explosionOeste, position.left(1))
+		game.onTick(1500, "sacarExplosion", {
+		
+		explo.finExplosion()
+		explosionNorte.finExplosion()
+		explosionSur.finExplosion()
+		explosionEste.finExplosion()
+		explosionOeste.finExplosion()
+		game.removeTickEvent("sacarExplosion")
+		})
 	}
 	
-	method removerExplosion(){
+	method removerExplosion(){ 
 		game.removeVisual(new Explosion())
 		game.removeVisual(explosionNorte)
 		game.removeVisual(explosionSur)
@@ -36,6 +46,10 @@ class Explosion{
 	method image()= "ExplosionCentro.png"
 	
 	method puedePisarte(_) = false
+	
+	method finExplosion(){
+		game.removeVisual(self)
+	}
 }
 
 object explosionNorte inherits Explosion {

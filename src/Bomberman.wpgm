@@ -27,14 +27,6 @@ program BomberMan {
 		
 	game.addVisual(bomberman)
 	
-	/*Temporal de meustra.
-	game.addVisualIn(new Explosion(), game.at(3,11))
-	game.addVisualIn(explosionNorte, game.at(3,12))
-	game.addVisualIn(explosionSur, game.at(3,10))
-	game.addVisualIn(explosionEste, game.at(4,11))
-	game.addVisualIn(explosionOeste, game.at(2,11))*/
-	
-	
 //	TECLADO
 	keyboard.up().onPressDo { bomberman.mover(arriba) }
 	keyboard.down().onPressDo { bomberman.mover(abajo) }
