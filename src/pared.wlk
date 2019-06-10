@@ -1,4 +1,6 @@
-class Pared {
+import wollok.game.*
+
+class Muro {
 	var property position
 	
 	constructor(_position){
@@ -6,9 +8,15 @@ class Pared {
 	}
 	
 	method mover(direccion) {
-		throw new Exception("No se puede pasar.")
+		throw new Exception()
 	}
 	
 	method puedePisarte(_) = false
-	method image() = "alpiste.png"
+	method image() = "muro.png"
+	method explotar(){ }
+}
+
+class Pared inherits Muro {
+	override method image() = "Muro2.png"
+	override method explotar(){ game.removeVisual(self) }
 }

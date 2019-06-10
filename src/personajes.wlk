@@ -33,29 +33,17 @@ object bomberman {
         })
     }
     
-    method irArriba() {
-		direccion = arriba
-		self.avanzar()
-	}
+    method irArriba() { direccion = arriba self.avanzar()}
 
-	method irAbajo() {
-		direccion = abajo
-		self.avanzar()
-	}
+	method irAbajo() { direccion = abajo self.avanzar() }
 
-	method irIzquierda() {
-		direccion = izquierda
-		self.avanzar()
-	}
+	method irIzquierda() { direccion = izquierda self.avanzar() }
 
-	method irDerecha() {
-		direccion = derecha
-		self.avanzar()
-	}
+	method irDerecha() { direccion = derecha self.avanzar() }
 	
-	method avanzar() {
-		position = direccion.siguiente(position)
-	}
+	method avanzar() { position = direccion.siguiente(position) }
+	
+	method explotar(){ }
 }
 
  

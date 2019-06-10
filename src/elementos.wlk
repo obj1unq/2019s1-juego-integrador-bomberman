@@ -26,15 +26,7 @@ class Bomba {
 		explosionOeste.finExplosion()
 		game.removeTickEvent("sacarExplosion")
 		})
-	}
-	
-	method removerExplosion(){ 
-		game.removeVisual(new Explosion())
-		game.removeVisual(explosionNorte)
-		game.removeVisual(explosionSur)
-		game.removeVisual(explosionEste)
-		game.removeVisual(explosionOeste)
-	}
+	}	
 	
 	method puedePisarte(_) = false
 	
@@ -45,7 +37,7 @@ class Explosion{
 	//Agregar posición acá o en game.
 	method image()= "ExplosionCentro.png"
 	
-	method puedePisarte(_) = false
+	method puedePisarte(_) = true
 	
 	method finExplosion(){
 		game.removeVisual(self)

@@ -2,7 +2,6 @@ import wollok.game.*
 import elementos.*
 import personajes.*
 import pared.*
-import muro.*
 import direcciones.*
 
 program BomberMan {
@@ -12,6 +11,9 @@ program BomberMan {
 	game.height(13)
 	game.width(18)
 	game.ground("suelo.png") //Conseguir un fondo
+	
+//  COLISIONES
+    //game.whenCollideDo(bomberman, { explosion => explosion.explotar() })
 
 //	PAREDES
 	const ancho = game.width() - 1
