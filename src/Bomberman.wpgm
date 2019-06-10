@@ -27,11 +27,7 @@ program BomberMan {
 		
 	posMuros.forEach { unMuro => game.addVisual(new Muro(unMuro)) }
 	
-	(0 .. ancho).forEach{ num1 => if(num1%2==0) game.addVisual(new Muro(new Position(num1,2))) }
-	(0 .. ancho).forEach{ num1 => if(num1%2==0) game.addVisual(new Muro(new Position(num1,4))) }
-	(0 .. ancho).forEach{ num1 => if(num1%2==0) game.addVisual(new Muro(new Position(num1,6))) }
-	(0 .. ancho).forEach{ num1 => if(num1%2==0) game.addVisual(new Muro(new Position(num1,8))) }
-	(0 .. ancho).forEach{ num1 => if(num1%2==0) game.addVisual(new Muro(new Position(num1,10))) }
+	(0 .. largo).forEach({ num => if(num%2==0) new Muro(new Position(0,0)).dibujarLineaDeMuros((0..ancho),num) })
 	
 	game.addVisual(bomberman)
 	
