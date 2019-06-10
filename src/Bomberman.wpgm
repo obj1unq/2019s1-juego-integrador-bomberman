@@ -9,7 +9,7 @@ program BomberMan {
 //	CONFIG	
 	game.title("Bomber Man")
 	game.height(13)
-	game.width(18)
+	game.width(19)
 	game.ground("suelo.png") //Conseguir un fondo
 	
 //  COLISIONES
@@ -26,7 +26,13 @@ program BomberMan {
 	(0 .. largo).forEach{ n => posMuros.add(new Position(ancho, n)) } // bordeDer
 		
 	posMuros.forEach { unMuro => game.addVisual(new Muro(unMuro)) }
-		
+	
+	(0 .. ancho).forEach{ num1 => if(num1%2==0) game.addVisual(new Muro(new Position(num1,2))) }
+	(0 .. ancho).forEach{ num1 => if(num1%2==0) game.addVisual(new Muro(new Position(num1,4))) }
+	(0 .. ancho).forEach{ num1 => if(num1%2==0) game.addVisual(new Muro(new Position(num1,6))) }
+	(0 .. ancho).forEach{ num1 => if(num1%2==0) game.addVisual(new Muro(new Position(num1,8))) }
+	(0 .. ancho).forEach{ num1 => if(num1%2==0) game.addVisual(new Muro(new Position(num1,10))) }
+	
 	game.addVisual(bomberman)
 	
 //	TECLADO
