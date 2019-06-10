@@ -12,20 +12,9 @@ class Bomba {
 
 	method detonar(position){
 		const explo = new Explosion()
-		game.addVisualIn(explo, position)
-		game.addVisualIn(explosionNorte, position.up(1))
-		game.addVisualIn(explosionSur, position.down(1))
-		game.addVisualIn(explosionEste, position.right(1))
-		game.addVisualIn(explosionOeste, position.left(1))
-		game.onTick(1500, "sacarExplosion", {
 		
-		explo.finExplosion()
-		explosionNorte.finExplosion()
-		explosionSur.finExplosion()
-		explosionEste.finExplosion()
-		explosionOeste.finExplosion()
-		game.removeTickEvent("sacarExplosion")
-		})
+		explo.crearExplosion(position)
+		
 	}	
 	
 	method puedePisarte(_) = false
@@ -38,34 +27,56 @@ class Explosion{
 	method image()= "ExplosionCentro.png"
 	
 	method puedePisarte(_) = true
-	
+
+	method crearExplosion(position){
+		game.addVisualIn(self, position)
+		const exploN = new ExplosionNorte()
+		game.addVisualIn(exploN, position.up(1))
+		const exploS = new ExplosionSur()
+		game.addVisualIn(exploS, position.down(1))
+		const exploE = new ExplosionEste()
+		game.addVisualIn(exploE, position.right(1))
+		const exploO = new ExplosionOeste()
+		game.addVisualIn(exploO, position.left(1))
+		game.onTick(1500, "sacarExplosion", {
+			
+		self.finExplosion()
+		exploN.finExplosion()
+		exploS.finExplosion()
+		exploE.finExplosion()
+		exploO.finExplosion()
+			game.removeTickEvent("sacarExplosion")
+		})
+	}
+		
 	method finExplosion(){
 		game.removeVisual(self)
 	}
+	
 }
 
-object explosionNorte inherits Explosion {
+class ExplosionNorte inherits Explosion {
 	//Posicion +1Norte +Alcance que dejaría cuerpo.
 	override method image()= "ExplosionNorte.png"
 }
 
-object explosionEste inherits Explosion {
+class ExplosionEste inherits Explosion {
 	override method image()= "ExplosionEste.png"
 }
 
-object explosionSur inherits Explosion {
+class ExplosionSur inherits Explosion {
 	override method image()= "ExplosionSur.png"
 }
 
-object explosionOeste inherits Explosion {
+class ExplosionOeste inherits Explosion {
 	override method image()= "ExplosionOeste.png"
 }
 
 //TEMPORAL
-object cuerpoNS inherits Explosion {
+class CuerpoNS inherits Explosion {
 	override method image()= "CuerpoExplosionNorteSur.png"
 }
-object cuerpoOE inherits Explosion {
+class CuerpoOE inherits Explosion {
 	override method image()= "CuerpoExplosionOesteEste.png"
 }
 
