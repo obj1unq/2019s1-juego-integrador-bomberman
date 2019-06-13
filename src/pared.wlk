@@ -15,8 +15,13 @@ class Muro {
 	method image() = "muro.png"
 	method explotar(){ }
 	
+	method remover(fuego){
+		game.removeVisual(fuego)
+	}
+	
 	method dibujarLineaDeMuros(lista,num2){
 		lista.forEach({ num => if(num%2==0) game.addVisual(new Muro(new Position(num,num2))) })
+		//game.whenCollideDo(explosion,{explosion=>self.remover(explosion)})
 	}
 }
 

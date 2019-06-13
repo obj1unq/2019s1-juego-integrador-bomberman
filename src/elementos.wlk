@@ -20,10 +20,9 @@ class Bomba {
 	method puedePisarte(_) = false
 	
 }
-//Explosion mirar bien.
+
 class Explosion{ 
-	//Agregar alcance de bomba que sera heredado.
-	//Agregar posición acá o en game.
+
 	method image()= "ExplosionCentro.png"
 	
 	method puedePisarte(_) = true
@@ -38,7 +37,7 @@ class Explosion{
 		game.addVisualIn(exploE, position.right(1))
 		const exploO = new ExplosionOeste()
 		game.addVisualIn(exploO, position.left(1))
-		game.onTick(1500, "sacarExplosion", {
+		game.onTick(500, "sacarExplosion", {
 			
 		self.finExplosion()
 		exploN.finExplosion()
@@ -53,30 +52,32 @@ class Explosion{
 		game.removeVisual(self)
 	}
 	
+	method remover(visual){
+		game.removeVisual(visual)
+	}
+	
 }
 
 class ExplosionNorte inherits Explosion {
-	//Posicion +1Norte +Alcance que dejaría cuerpo.
-	override method image()= "ExplosionNorte.png"
+	override method image() = "ExplosionNorte.png"
 }
 
 class ExplosionEste inherits Explosion {
-	override method image()= "ExplosionEste.png"
+	override method image() = "ExplosionEste.png"
 }
 
 class ExplosionSur inherits Explosion {
-	override method image()= "ExplosionSur.png"
+	override method image() = "ExplosionSur.png"
 }
 
 class ExplosionOeste inherits Explosion {
-	override method image()= "ExplosionOeste.png"
+	override method image() = "ExplosionOeste.png"
 }
 
-//TEMPORAL
 class CuerpoNS inherits Explosion {
-	override method image()= "CuerpoExplosionNorteSur.png"
+	override method image() = "CuerpoExplosionNorteSur.png"
 }
 class CuerpoOE inherits Explosion {
-	override method image()= "CuerpoExplosionOesteEste.png"
+	override method image() = "CuerpoExplosionOesteEste.png"
 }
 

@@ -9,17 +9,12 @@ object bomberman {
 	method image() = "Bomberman.png"
 	
 	method mover(unaDireccion) {
-		self.validarLugarLibre(unaDireccion) 
-		position = unaDireccion.siguiente(position)
-	}
-
-	method validarLugarLibre(unaDireccion) {
 		const posAlLado = unaDireccion.siguiente(position) 
 		var lugarLibre = game.getObjectsIn(posAlLado)
 			.all{ obj => obj.puedePisarte(self) } 
 		
-		if (!lugarLibre)
-			throw new Exception("No se puede pasar")
+		if (lugarLibre){
+		position = unaDireccion.siguiente(position)}
 	}
 	
 	method puedePisarte(_) = false
