@@ -5,6 +5,8 @@ import direcciones.*
 class Bomba {
 	method image() = "Bomb.png"
 	
+	method explotar(){ }
+	
 	method explotar(position){
 		game.removeVisual(self)
 		self.detonar(position)
@@ -26,6 +28,8 @@ class Explosion{
 	method image()= "ExplosionCentro.png"
 	
 	method puedePisarte(_) = true
+	
+    method explotar()={ }
 
 	method crearExplosion(position){
 		game.addVisualIn(self, position)
@@ -37,6 +41,13 @@ class Explosion{
 		game.addVisualIn(exploE, position.right(1))
 		const exploO = new ExplosionOeste()
 		game.addVisualIn(exploO, position.left(1))
+		
+		game.whenCollideDo(self, { alguien => alguien.explotar() })
+		game.whenCollideDo(exploN, { alguien => alguien.explotar() })
+		game.whenCollideDo(exploS, { alguien => alguien.explotar() })
+		game.whenCollideDo(exploE, { alguien => alguien.explotar() })
+		game.whenCollideDo(exploO, { alguien => alguien.explotar() })
+		
 		game.onTick(500, "sacarExplosion", {
 			
 		self.finExplosion()

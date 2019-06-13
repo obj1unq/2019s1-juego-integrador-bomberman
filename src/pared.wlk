@@ -13,11 +13,12 @@ class Muro {
 	
 	method puedePisarte(_) = false
 	method image() = "muro.png"
-	method explotar(){ }
-	
-	method remover(fuego){
-		game.removeVisual(fuego)
-	}
+	method explotar(){ } //game.whenCollideDo(self, { explosion => explosion.finExplosion() })
+	                     //^ Frena la explosion pero rompe todo.
+	                     
+	//method remover(fuego){
+	//	game.removeVisual(fuego)
+	//}
 	
 	method dibujarLineaDeMuros(lista,num2){
 		lista.forEach({ num => if(num%2==0) game.addVisual(new Muro(new Position(num,num2))) })

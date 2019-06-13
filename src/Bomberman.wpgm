@@ -10,7 +10,7 @@ program BomberMan {
 	game.title("Bomber Man")
 	game.height(13)
 	game.width(19)
-	game.ground("suelo.png") //Conseguir un fondo
+	game.ground("suelo.png")
 
 //	PAREDES
 	const ancho = game.width() - 1
@@ -34,16 +34,19 @@ program BomberMan {
 					 new Pared(new Position(7,7)),new Pared(new Position(7,9)),new Pared(new Position(7,11)),
 					 new Pared(new Position(9,7)),new Pared(new Position(9,5)),new Pared(new Position(9,3)),
 					 new Pared(new Position(11,3)),new Pared(new Position(11,9)),new Pared(new Position(11,11)),
-					 new Pared(new Position(1,6)),new Pared(new Position(1,12)),new Pared(new Position(1,4)),
+					 new Pared(new Position(1,6)),new Pared(new Position(1,11)),new Pared(new Position(1,4)),
 					 new Pared(new Position(5,2)),new Pared(new Position(9,2)),new Pared(new Position(11,2)),
 					 new Pared(new Position(8,3)),new Pared(new Position(8,9)),new Pared(new Position(8,5)),
 					 new Pared(new Position(10,2)),new Pared(new Position(10,7)),new Pared(new Position(10,9)),
 					 new Pared(new Position(15,1)),new Pared(new Position(14,6)),new Pared(new Position(13,8)),
 					 new Pared(new Position(17,2)),new Pared(new Position(17,7)),new Pared(new Position(16,9)),
 					 new Pared(new Position(15,6)),new Pared(new Position(16,11)),new Pared(new Position(17,8))]
+ 
+	//paredes.forEach({ pared => game.addVisual(pared)
+	//				game.whenCollideDo(pared,{explosion => explosion.remover(pared)}) })
 	
-	paredes.forEach({ pared => game.addVisual(pared)
-					game.whenCollideDo(pared,{explosion => explosion.remover(pared)}) })
+			paredes.forEach({pared => game.addVisual(pared)})
+
 	
 //	TECLADO
 	keyboard.up().onPressDo { bomberman.mover(arriba) }
