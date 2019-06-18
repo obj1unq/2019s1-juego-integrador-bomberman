@@ -24,6 +24,7 @@ class Muro {
 		lista.forEach({ num => if(num%2==0) game.addVisual(new Muro(new Position(num,num2))) })
 		//game.whenCollideDo(explosion,{explosion=>self.remover(explosion)})
 	}
+	method tocar(){ }
 }
 
 class Pared inherits Muro {

@@ -46,6 +46,8 @@ object bomberman {
 	method explotar(){
 		estaVivo = false
 	}
+	
+	method tocar(){ self.explotar() }
 }
 
  

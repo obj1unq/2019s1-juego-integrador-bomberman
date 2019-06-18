@@ -29,15 +29,6 @@ program BomberMan {
 	
 	game.addVisual(bomberman)
 	
-	
-// RIVALES
-	const rivales = [new Rival(8), new Rival(10)]
-	
-	rivales.forEach { rival => game.addVisual(rival)
-					game.whenCollideDo(rival, { personaje => personaje.explotar()})
-					
-					game.onTick(1000,"AcercarseA",{rival.acercarseA(bomberman)})
-	}
 
 
 // COLISIONES
@@ -55,8 +46,18 @@ program BomberMan {
 					 new Pared(new Position(15,6)),new Pared(new Position(16,11)),new Pared(new Position(17,8))]
  
 	paredes.forEach({pared => game.addVisual(pared)})
-
 	
+	
+// RIVALES
+	const rivales = [new Rival(8), new Rival(10)]
+	
+	rivales.forEach { rival => game.addVisual(rival)
+					game.whenCollideDo(rival, { personaje => personaje.tocar()})
+					
+					game.onTick(1000,"AcercarseA",{rival.acercarseA(bomberman)})
+	}
+
+
 //	TECLADO
 	keyboard.up().onPressDo { bomberman.mover(arriba) }
 	keyboard.down().onPressDo { bomberman.mover(abajo) }

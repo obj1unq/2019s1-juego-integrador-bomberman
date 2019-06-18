@@ -20,6 +20,8 @@ class Bomba {
 	
 	method puedePisarte(_) = false
 	
+	method tocar(){ }
+	
 }
 
 class Explosion{ 
@@ -47,7 +49,7 @@ class Explosion{
 		game.whenCollideDo(exploE, { alguien => alguien.explotar() })
 		game.whenCollideDo(exploO, { alguien => alguien.explotar() })
 		
-		game.onTick(5000, "sacarExplosion", {
+		game.onTick(500, "sacarExplosion", {
 			
 		self.finExplosion()
 		exploN.finExplosion()
@@ -65,6 +67,9 @@ class Explosion{
 	method remover(visual){
 		game.removeVisual(visual)
 	}	
+	method tocar(){
+		
+	}
 }
 
 class ExplosionNorte inherits Explosion {
