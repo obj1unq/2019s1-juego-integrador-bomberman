@@ -13,9 +13,9 @@ class Muro {
 	
 	method puedePisarte(_) = false
 	method image() = "muro.png"
-	method explotar(){ } //game.whenCollideDo(self, { explosion => explosion.finExplosion() })
+	method explotar(){} //game.whenCollideDo(self, { explosion => explosion.finExplosion() })
 	                     //^ Frena la explosion pero rompe todo.
-	                     
+
 	//method remover(fuego){
 	//	game.removeVisual(fuego)
 	//}

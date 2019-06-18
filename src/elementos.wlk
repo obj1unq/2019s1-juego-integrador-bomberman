@@ -16,7 +16,6 @@ class Bomba {
 		const explo = new Explosion()
 		
 		explo.crearExplosion(position)
-		
 	}	
 	
 	method puedePisarte(_) = false
@@ -48,7 +47,7 @@ class Explosion{
 		game.whenCollideDo(exploE, { alguien => alguien.explotar() })
 		game.whenCollideDo(exploO, { alguien => alguien.explotar() })
 		
-		game.onTick(500, "sacarExplosion", {
+		game.onTick(5000, "sacarExplosion", {
 			
 		self.finExplosion()
 		exploN.finExplosion()
@@ -65,8 +64,7 @@ class Explosion{
 	
 	method remover(visual){
 		game.removeVisual(visual)
-	}
-	
+	}	
 }
 
 class ExplosionNorte inherits Explosion {

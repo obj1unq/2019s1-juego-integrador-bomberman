@@ -8,12 +8,12 @@ object bomberman {
 	
 	var property estaVivo = true //Con esto se frena movimiento y dejar bombas.
     
-    method image()= if(estaVivo){ "Bomberman.png"  } else "BombermanRIP.png" //Asi por ahora.
+    method image() = if(estaVivo){ "Bomberman.png"  }
+    				else { "BombermanRIP.png" } //Asi por ahora.
 
 	method mover(unaDireccion) {
 		if(estaVivo){const posAlLado = unaDireccion.siguiente(position) 
-		var lugarLibre = game.getObjectsIn(posAlLado)
-			.all{ obj => obj.puedePisarte(self) } 
+		var lugarLibre = game.getObjectsIn(posAlLado).all{ obj => obj.puedePisarte(self) } 
 		
 		if (lugarLibre){
 		position = unaDireccion.siguiente(position)}
@@ -24,12 +24,11 @@ object bomberman {
 	
 	method dejarBomba(bomb){
 		if(estaVivo){
-		var bombPosition = position
-        game.addVisualIn(bomb, bombPosition)
-        game.onTick(2000, "explotarBomba", { 
-        bomb.explotar(bombPosition) //Con este agregamos la explosión.
-        game.removeTickEvent("explotarBomba")
-        })
+			var bombPosition = position
+        	game.addVisualIn(bomb, bombPosition)
+        	game.onTick(2000, "explotarBomba", { 
+        	bomb.explotar(bombPosition) //Con este agregamos la explosión.
+        	game.removeTickEvent("explotarBomba") })
         }
     }
     
@@ -44,7 +43,9 @@ object bomberman {
 	
 	method avanzar() { position = direccion.siguiente(position) }
 	
-	method explotar(){ estaVivo = false }
+	method explotar(){
+		estaVivo = false
+	}
 }
 
  
