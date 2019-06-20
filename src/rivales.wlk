@@ -11,7 +11,7 @@ class Rival {
 		position = _position
 	}
 	
-	method image() = if(estaVivo) "Rival.png" else "RivalMuerto.png"
+	method image() = if(estaVivo) "Gotita.png" else "RivalMuerto.png"
 	
 	method puedePisarte(_) = true
 	
@@ -35,6 +35,7 @@ class Rival {
 			position = unaDireccion.siguiente(position)
 		}
 	}
+	method puedeExplotar()= true
 	
 	
 	/*method acercarseA(personaje) {

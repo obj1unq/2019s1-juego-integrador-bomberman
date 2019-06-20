@@ -22,9 +22,15 @@ class Bomba {
 	
 	method tocar(){ }
 	
+	method puedeExplotar()= true
+	
 }
 
 class Explosion{ 
+	
+	var hayFlama = false
+	
+	method existe() { hayFlama = not hayFlama }
 
 	method image()= "ExplosionCentro.png"
 	
@@ -34,23 +40,38 @@ class Explosion{
 
 	method crearExplosion(position){
 		game.addVisualIn(self, position)
-		const exploN = new ExplosionNorte()
-		game.addVisualIn(exploN, position.up(1))
-		const exploS = new ExplosionSur()
-		game.addVisualIn(exploS, position.down(1))
-		const exploE = new ExplosionEste()
-		game.addVisualIn(exploE, position.right(1))
-		const exploO = new ExplosionOeste()
-		game.addVisualIn(exploO, position.left(1))
-		
+		self.existe()
 		game.whenCollideDo(self, { alguien => alguien.explotar() })
-		game.whenCollideDo(exploN, { alguien => alguien.explotar() })
-		game.whenCollideDo(exploS, { alguien => alguien.explotar() })
-		game.whenCollideDo(exploE, { alguien => alguien.explotar() })
-		game.whenCollideDo(exploO, { alguien => alguien.explotar() })
 		
-		game.onTick(500, "sacarExplosion", {
-			
+		const exploN = new ExplosionNorte()
+		if(exploN.hayLugar(position.up(1))){
+	    exploN.existe()
+		game.addVisualIn(exploN, position.up(1))
+		game.whenCollideDo(exploN, { alguien => alguien.explotar() })	
+		}
+		
+		const exploS = new ExplosionSur()
+		if(exploS.hayLugar(position.down(1))){
+	    exploS.existe()
+		game.addVisualIn(exploS, position.down(1))
+		game.whenCollideDo(exploS, { alguien => alguien.explotar() })
+		}
+		
+		const exploE = new ExplosionEste()
+		if(exploE.hayLugar(position.right(1))){
+		exploE.existe()
+		game.addVisualIn(exploE, position.right(1))
+		game.whenCollideDo(exploE, { alguien => alguien.explotar() })
+		}
+		
+		const exploO = new ExplosionOeste()
+		if(exploO.hayLugar(position.left(1))){
+		exploO.existe()
+		game.addVisualIn(exploO, position.left(1))
+		game.whenCollideDo(exploO, { alguien => alguien.explotar() })
+		}
+		
+		game.onTick(500, "sacarExplosion", {	
 		self.finExplosion()
 		exploN.finExplosion()
 		exploS.finExplosion()
@@ -59,9 +80,15 @@ class Explosion{
 			game.removeTickEvent("sacarExplosion")
 		})
 	}
+	
+	method hayLugar(direccion) {
+		return  game.getObjectsIn(direccion).all{ obj => obj.puedeExplotar() }
+	}
+	
+	method puedeExplotar()= true
 		
 	method finExplosion(){
-		game.removeVisual(self)
+		if(hayFlama){game.removeVisual(self)}
 	}
 	
 	method remover(visual){

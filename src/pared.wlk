@@ -25,9 +25,12 @@ class Muro {
 		//game.whenCollideDo(explosion,{explosion=>self.remover(explosion)})
 	}
 	method tocar(){ }
+	
+	method puedeExplotar()= false
 }
 
 class Pared inherits Muro {
 	override method image() = "Muro2.png"
 	override method explotar(){ game.removeVisual(self) }
+	override method puedeExplotar()= true
 }
