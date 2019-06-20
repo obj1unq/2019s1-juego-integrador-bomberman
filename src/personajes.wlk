@@ -48,7 +48,10 @@ object bomberman {
 	}
 	
 	method tocar(){ self.explotar() }
+	
 	method puedeExplotar()= true
+	
+	method esMatable()= true
 }
 
  

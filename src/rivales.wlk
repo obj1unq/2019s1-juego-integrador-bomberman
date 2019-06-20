@@ -25,7 +25,7 @@ class Rival {
 		}
 	}
 	
-	method esDireccionPosible(dir) = game.getObjectsIn(dir.siguiente(position)).all{ obj => obj.puedePisarte(self) }
+	method esDireccionPosible(dir) = game.getObjectsIn(dir.siguiente(position)).all{ obj => obj.esMatable() }
 
 	method moverseSiEstaLibre(){
 		const direccionesPosibles = [arriba,abajo,derecha,izquierda].filter { dir => self.esDireccionPosible(dir) }
@@ -53,3 +53,41 @@ class Rival {
 	method tocar(){ }
 }
 
+class Rival2 {
+	const numero
+	var property position
+	var property estaVivo = true
+	var previousPosition = position
+
+	constructor(_numero) {
+		numero = _numero
+		position = game.at(numero + 1, numero + 1)
+	}
+
+	method image() = if(estaVivo) "Ballon.png" else "RivalMuerto.png"
+
+	method puedePisarte(_) = true
+
+	method explotar(){
+		estaVivo = false  game.removeVisual(self)
+	}
+
+	method acercarseA(personaje) {
+		if(estaVivo) {
+			var otraPosicion = personaje.position()
+
+			var newX = position.x() + if (otraPosicion.x() > position.x()) 1 else -1
+			var newY = position.y() + if (otraPosicion.y() > position.y()) 1 else -1
+			position = game.at(newX, newY) }
+	}
+
+	method resetPreviousPosition(){
+		position = previousPosition
+	}
+	
+		method puedeExplotar()= true
+		
+		method tocar(){ }
+		
+		method esMatable()= true
+}

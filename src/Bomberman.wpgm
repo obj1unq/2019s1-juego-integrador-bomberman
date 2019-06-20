@@ -52,8 +52,17 @@ program BomberMan {
 	rivales.forEach { rival => game.addVisual(rival)
 					game.whenCollideDo(rival, { personaje => personaje.tocar()})
 					
-					game.onTick(1000,"AcercarseA",{rival.moverse()})
+					game.onTick(600,"AcercarseA",{rival.moverse()})
 	}
+	
+    const rivales2 = [new Rival2(8), new Rival2(10)]
+
+	rivales2.forEach { rival => game.addVisual(rival)
+					game.whenCollideDo(rival, { personaje => personaje.tocar()})
+
+					game.onTick(1000,"AcercarseA",{rival.acercarseA(bomberman)})
+	}
+	
 
 
 //	TECLADO

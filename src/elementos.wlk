@@ -24,6 +24,8 @@ class Bomba {
 	
 	method puedeExplotar()= true
 	
+	method esMatable()= false 
+	
 }
 
 class Explosion{ 
@@ -97,6 +99,8 @@ class Explosion{
 	method tocar(){
 		
 	}
+	
+	method esMatable()= true //No pero los enemigos tienen que pisar el fuego
 }
 
 class ExplosionNorte inherits Explosion {
