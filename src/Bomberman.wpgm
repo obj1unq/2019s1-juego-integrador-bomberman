@@ -49,12 +49,12 @@ program BomberMan {
 	
 	
 // RIVALES
-	const rivales = [new Rival(8), new Rival(10)]
+	const rivales = [new Rival(new Position(8,7)), new Rival(new Position(9,9))]
 	
 	rivales.forEach { rival => game.addVisual(rival)
 					game.whenCollideDo(rival, { personaje => personaje.tocar()})
 					
-					game.onTick(1000,"AcercarseA",{rival.acercarseA(bomberman)})
+					game.onTick(1000,"AcercarseA",{rival.moverse()})
 	}
 
 
