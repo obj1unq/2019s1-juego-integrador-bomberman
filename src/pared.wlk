@@ -29,6 +29,10 @@ class Muro {
 	method puedeExplotar()= false
 	
 	method esMatable()= false
+	
+	method tieneLlave(){}
+	
+	method ganaste(){}
 }
 
 class Pared inherits Muro {

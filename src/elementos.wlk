@@ -26,6 +26,10 @@ class Bomba {
 	
 	method esMatable()= false 
 	
+	method tieneLlave(){}
+	
+	method ganaste(){}
+	
 }
 
 class Explosion{ 
@@ -101,6 +105,10 @@ class Explosion{
 	}
 	
 	method esMatable()= true //No pero los enemigos tienen que pisar el fuego
+	
+	method tieneLlave(){}
+	
+	method ganaste(){}
 }
 
 class ExplosionNorte inherits Explosion {
@@ -125,4 +133,76 @@ class CuerpoNS inherits Explosion {
 class CuerpoOE inherits Explosion {
 	override method image() = "CuerpoExplosionOesteEste.png"
 }
+
+object door{
+	method image()= "Door.png"
+	
+	method position()= game.at(1,11)
+	
+	method tocar(){}
+		
+    method esMatable()= true
+    
+    method explotar(){ }
+    
+    method puedePisarte(_) = true
+    
+    method puedeExplotar()= true
+    
+    method tieneLlave(){}
+    
+    method ganaste(){ if(bomberman.poseeLlave()){
+    	game.addVisualIn(cartelVictory, game.at(game.width()/2, game.height()/2))
+    	game.removeVisual(bomberman)
+    }}
+	
+}
+
+object key{
+	method image()= "Llave.png"
+	
+	method position()= game.at(16,11)
+	
+	method tocar(){}
+		
+    method esMatable()= true
+    
+    method explotar(){ }
+    
+    method puedePisarte(_) = true
+    
+    method puedeExplotar()= true
+    
+    method tieneLlave(){
+       bomberman.tieneLlave()
+    }
+    
+    method ganaste(){}
+  
+}
+ 
+object cartelVictory{
+ 
+    var property position
+    
+    method posicion(_position){
+		position = _position
+	}
+	method image()= "YouWin.png"
+		
+	method tocar(){}
+		
+    method esMatable()= true
+    
+    method explotar(){ }
+    
+    method puedePisarte(_) = true
+    
+    method puedeExplotar()= true
+    
+    method tieneLlave(){
+    }
+    
+    method ganaste(){}
+}   
 

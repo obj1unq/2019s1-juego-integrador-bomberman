@@ -37,40 +37,19 @@ class Rival {
 	}
 	method puedeExplotar()= true
 	
-	
-	/*method acercarseA(personaje) {
-		if(estaVivo) {
-			var otraPosicion = personaje.position()
-			
-			var newX = position.x() + if (otraPosicion.x() > position.x()) 1 else -1
-		 	var newY = position.y() + if (otraPosicion.y() > position.y()) 1 else -1
-			//newX = newX.max(0).min(game.width() - 2)
-			//newY = newY.max(0).min(game.height() - 2) 
-			position = game.at(newX, position.y())
-			position = game.at(newX,newY) }
-	}*/
-	
 	method tocar(){ }
+	
+	method tieneLlave(){}
+	
+	method ganaste(){}
+	
+	method esMatable()= true
 }
 
-class Rival2 {
-	const numero
-	var property position
-	var property estaVivo = true
+class Rival2 inherits Rival{
 	var previousPosition = position
 
-	constructor(_numero) {
-		numero = _numero
-		position = game.at(numero + 1, numero + 1)
-	}
-
-	method image() = if(estaVivo) "Ballon.png" else "RivalMuerto.png"
-
-	method puedePisarte(_) = true
-
-	method explotar(){
-		estaVivo = false  game.removeVisual(self)
-	}
+	override method image() = if(estaVivo) "Ballon.png" else "RivalMuerto.png"
 
 	method acercarseA(personaje) {
 		if(estaVivo) {
@@ -85,9 +64,4 @@ class Rival2 {
 		position = previousPosition
 	}
 	
-		method puedeExplotar()= true
-		
-		method tocar(){ }
-		
-		method esMatable()= true
 }

@@ -7,6 +7,10 @@ object bomberman {
 	var property direccion //= arriba Posible valor para mover a bomberman
 	
 	var property estaVivo = true //Con esto se frena movimiento y dejar bombas.
+	
+	var poseeLlave = false
+	
+	method poseeLlave()= return poseeLlave
     
     method image() = if(estaVivo){ "Bomberman.png"  }
     				else { "BombermanRIP.png" } //Asi por ahora.
@@ -52,6 +56,13 @@ object bomberman {
 	method puedeExplotar()= true
 	
 	method esMatable()= true
+	
+	method tieneLlave(){
+	   poseeLlave = true
+	   game.removeVisual(key)
+	}
+	
+	method ganaste(){}
 }
 
  
