@@ -53,7 +53,9 @@ program BomberMan {
 	
 	
 // RIVALES
-	const rivales = [new Rival(new Position(8,7)), new Rival(new Position(9,9))]
+	const rivales = [new Rival(new Position(9,9)), new Rival(new Position(1,5)), 
+		             new Rival(new Position(13,3)), new Rival(new Position(3,8)),
+		             new Rival(new Position(13,9))]
 	
 	rivales.forEach { rival => game.addVisual(rival)
 					game.whenCollideDo(rival, { personaje => personaje.tocar()})
@@ -61,7 +63,9 @@ program BomberMan {
 					game.onTick(600,"AcercarseA",{rival.moverse()})
 	}
 	
-    const rivales2 = [new Rival2(game.at(8,8)), new Rival2(game.at(10,11)), new Rival2(game.at(1,14))]
+    const rivales2 = [new Rival2(game.at(8,8)), new Rival2(game.at(10,11)),
+    	              new Rival2(game.at(1,14)),new Rival2(game.at(50,50)),
+    	              new Rival2(game.at(0,90))]
 
 	rivales2.forEach { rival => game.addVisual(rival)
 					game.whenCollideDo(rival, { personaje => personaje.tocar()})
