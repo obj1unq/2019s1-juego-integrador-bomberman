@@ -117,12 +117,7 @@ class Explosion{
 		self.existe()
 		game.whenCollideDo(self, { alguien => alguien.explotar() })
 		
-		const exploN = new ExplosionNorte()
-		if(exploN.hayLugar(position.up(2))){
-	    exploN.existe()
-		game.addVisualIn(exploN, position.up(2))
-		game.whenCollideDo(exploN, { alguien => alguien.explotar() })	
-		}
+		
 		//Expansion
 		const exploNS1 = new ExplosionNorteSur()
 		if(exploNS1.hayLugar(position.up(1))){
@@ -130,9 +125,15 @@ class Explosion{
 		game.addVisualIn(exploNS1, position.up(1))
 		game.whenCollideDo(exploNS1, { alguien => alguien.explotar() })	
 		}
+		const exploN = new ExplosionNorte()
+		if(exploN.hayLugar(position.up(1)) && exploN.hayLugar(position.up(2))){
+	    exploN.existe()
+		game.addVisualIn(exploN, position.up(2))
+		game.whenCollideDo(exploN, { alguien => alguien.explotar() })	
+		}
 		
 		const exploS = new ExplosionSur()
-		if(exploS.hayLugar(position.down(2))){
+		if(exploS.hayLugar(position.down(1)) && exploS.hayLugar(position.down(2))){
 	    exploS.existe()
 		game.addVisualIn(exploS, position.down(2))
 		game.whenCollideDo(exploS, { alguien => alguien.explotar() })
@@ -146,7 +147,7 @@ class Explosion{
 		}
 		
 		const exploE = new ExplosionEste()
-		if(exploE.hayLugar(position.right(2))){
+		if(exploE.hayLugar(position.right(1)) && exploE.hayLugar(position.right(2))){
 		exploE.existe()
 		game.addVisualIn(exploE, position.right(2))
 		game.whenCollideDo(exploE, { alguien => alguien.explotar() })
@@ -161,7 +162,7 @@ class Explosion{
 		
 		
 		const exploO = new ExplosionOeste()
-		if(exploO.hayLugar(position.left(2))){
+		if(exploO.hayLugar(position.left(1)) && exploO.hayLugar(position.left(2))){
 		exploO.existe()
 		game.addVisualIn(exploO, position.left(2))
 		game.whenCollideDo(exploO, { alguien => alguien.explotar() })
@@ -289,6 +290,31 @@ object cartelVictory{
 		position = _position
 	}
 	method image()= "YouWin.png"
+		
+	method tocar(){}
+		
+    method esMatable()= true
+    
+    method explotar(){ }
+    
+    method puedePisarte(_) = true
+    
+    method puedeExplotar()= true
+    
+    method tieneLlave(){
+    }
+    
+    method ganaste(){}
+}   
+
+object cartelGameOver{
+ 
+    var property position
+    
+    method posicion(_position){
+		position = _position
+	}
+	method image()= "GameOver.png"
 		
 	method tocar(){}
 		

@@ -4,7 +4,7 @@ import direcciones.*
 
 object bomberman {
 	var property position = game.at(1,1)
-	var property direccion //= arriba Posible valor para mover a bomberman
+	var property direccion = abajo //Posible valor para mover a bomberman
 	
 	var property estaVivo = true //Con esto se frena movimiento y dejar bombas.
 	
@@ -53,6 +53,7 @@ object bomberman {
 	
 	method explotar(){
 		estaVivo = false
+		game.addVisualIn(cartelGameOver, game.at(1, game.height()/2))
 	}
 	
 	method tocar(){ self.explotar() }
@@ -75,8 +76,11 @@ object bomberman {
 	
 	method revivir(){
 		estaVivo = true
-		position = game.at(1,1)
+		poseePoder = false
+		position = game.at(1,1)		
 	}
 }
+
+
 
  
