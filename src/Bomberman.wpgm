@@ -9,13 +9,20 @@ import plataformas.*
 program BomberMan {
 
 //	CONFIG	
-	game.title("Bomber Man")
+	game.title("BomberMan")
 	game.height(13)
 	game.width(19)
 	game.ground("suelo.png")
-
-	plataforma1.cargar()
-
+	
+	game.addVisual(caratula)
+	
+	keyboard.any().onPressDo{
+		
+		game.removeVisual(caratula)
+		plataforma1.cargar()
+		
+	}
+	
 	game.start()
 }
 

@@ -332,3 +332,7 @@ object cartelGameOver{
     method ganaste(){}
 }   
 
+object caratula{
+	method image() = "Caratula.png"
+	method position() = game.origin()
+}
