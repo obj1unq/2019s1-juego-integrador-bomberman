@@ -63,6 +63,11 @@ object bomberman {
 	}
 	
 	method ganaste(){}
+	
+	method revivir(){
+		estaVivo = true
+		position = game.at(1,1)
+	}
 }
 
  
