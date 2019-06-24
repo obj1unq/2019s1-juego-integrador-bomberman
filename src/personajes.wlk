@@ -10,6 +10,10 @@ object bomberman {
 	
 	var poseeLlave = false
 	
+	var poseePoder = false
+	
+	method poseePoder() = return poseePoder
+	
 	method poseeLlave()= return poseeLlave
     
     method image() = if(estaVivo){ "Bomberman.png"  }
@@ -60,6 +64,11 @@ object bomberman {
 	method tieneLlave(){
 	   poseeLlave = true
 	   game.removeVisual(key)
+	}
+	
+	method tienePoder(){
+	   poseePoder = true
+	   game.removeVisual(powerUp)
 	}
 	
 	method ganaste(){}

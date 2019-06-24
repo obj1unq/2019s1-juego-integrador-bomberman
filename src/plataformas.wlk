@@ -19,12 +19,12 @@ object plataforma1 {
 		(0 .. largo).forEach{ n => posMuros.add(new Position(ancho, n)) } // bordeDer
 	
 		game.addVisual(door)
-	
 		game.addVisual(bomberman)
-	
 		game.addVisual(key)
+		game.addVisual(powerUp)
 	
 		game.whenCollideDo(bomberman, { llave => llave.tieneLlave()})
+		game.whenCollideDo(bomberman, { poder => poder.tienePoder() })
 	
 	
 		const paredes = [new Pared(new Position(3,3)),new Pared(new Position(3,5)),new Pared(new Position(3,7)),
