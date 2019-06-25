@@ -16,7 +16,7 @@ object bomberman {
 	
 	method poseeLlave()= return poseeLlave
     
-    method image() = if(estaVivo){ "Bomberman.png"  }
+    method image() = if(estaVivo){ "Bomberman" + direccion.puntoCardinal() + ".png"  }
     				else { "BombermanRIP.png" } //Asi por ahora.
 
 	method mover(unaDireccion) {
@@ -26,6 +26,8 @@ object bomberman {
 		if (lugarLibre){
 		position = unaDireccion.siguiente(position)}
 		}
+		
+		direccion = unaDireccion
 	}
 	
 	method puedePisarte(_) = false

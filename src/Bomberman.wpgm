@@ -16,7 +16,7 @@ program BomberMan {
 	
 	game.addVisual(caratula)
 	
-	keyboard.any().onPressDo{
+	keyboard.enter().onPressDo{
 		
 		game.removeVisual(caratula)
 		plataforma1.cargar()
@@ -25,4 +25,3 @@ program BomberMan {
 	
 	game.start()
 }
-
