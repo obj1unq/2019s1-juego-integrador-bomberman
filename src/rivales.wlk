@@ -5,7 +5,6 @@ import direcciones.*
 class Rival {
 	var property position
 	var property estaVivo = true
-	//var property unaDireccion = 1.randomUpTo(4).truncate(0)
 	
 	constructor(_position){
 		position = _position

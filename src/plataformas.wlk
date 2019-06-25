@@ -55,12 +55,10 @@ object plataforma1 {
 		rivales.forEach { rival => game.addVisual(rival)
 					    	game.whenCollideDo(rival, { personaje => personaje.tocar()})
 					
-							game.onTick(600,"AcercarseA",{rival.moverse()})
+							game.onTick(500,"AcercarseA",{rival.moverse()})
 		}
 	
-  	 	const rivales2 = [/*new Rival2(game.at(8,8)), new Rival2(game.at(10,11)),
-   		 	              new Rival2(game.at(1,14)),*/new Rival2(game.at(50,50)),
-  		  	              new Rival2(game.at(0,90))]
+  	 	const rivales2 = [new Rival2(game.at(1,14)),new Rival2(game.at(40,40))]
 
 		rivales2.forEach { rival => game.addVisual(rival)
 					game.whenCollideDo(rival, { personaje => personaje.tocar()})

@@ -17,7 +17,7 @@ object bomberman {
 	method poseeLlave()= return poseeLlave
     
     method image() = if(estaVivo){ "Bomberman" + direccion.puntoCardinal() + ".png"  }
-    				else { "BombermanRIP.png" } //Asi por ahora.
+    				else { "BombermanRIP.png" }
 
 	method mover(unaDireccion) {
 		if(estaVivo){const posAlLado = unaDireccion.siguiente(position) 
