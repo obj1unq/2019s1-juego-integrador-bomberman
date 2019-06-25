@@ -58,7 +58,7 @@ object plataforma1 {
 							game.onTick(500,"AcercarseA",{rival.moverse()})
 		}
 	
-  	 	const rivales2 = [new Rival2(game.at(1,14)),new Rival2(game.at(40,40))]
+  	 	const rivales2 = [new Rival2(game.at(1,14)),new Rival2(game.at(50,13))]
 
 		rivales2.forEach { rival => game.addVisual(rival)
 					game.whenCollideDo(rival, { personaje => personaje.tocar()})
