@@ -33,6 +33,8 @@ class Muro {
 	method tieneLlave(){}
 	
 	method ganaste(){}
+	
+	method tienePoder(){}
 }
 
 class Pared inherits Muro {

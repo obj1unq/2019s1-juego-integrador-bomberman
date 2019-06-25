@@ -231,6 +231,8 @@ object door{
     
     method tieneLlave(){}
     
+    method tienePoder(){}
+    
     method ganaste(){ if(bomberman.poseeLlave()){
     	game.addVisualIn(cartelVictory, game.at(game.width()/2, game.height()/2))
     	game.removeVisual(bomberman)
@@ -258,6 +260,8 @@ object key{
     }
     
     method ganaste(){}
+    
+    method tienePoder(){}
 }
 
 object powerUp{
@@ -305,6 +309,8 @@ object cartelVictory{
     }
     
     method ganaste(){}
+    
+    method tienePoder(){}
 }   
 
 object cartelGameOver{
@@ -330,6 +336,8 @@ object cartelGameOver{
     }
     
     method ganaste(){}
+    
+    method tienePoder(){}
 }   
 
 object caratula{

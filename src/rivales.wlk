@@ -43,6 +43,8 @@ class Rival {
 	method ganaste(){}
 	
 	method esMatable()= true
+	
+	method tienePoder(){}
 }
 
 class Rival2 inherits Rival{
